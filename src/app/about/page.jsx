@@ -1,10 +1,18 @@
 import React from 'react'
-
-const Page = () => {
+import PostList from './PostList'
+const Page =  async () => {
+  let  post = []
+  try{
+    const data =   await fetch("https://jsonplaceholder.typicode.com/posts")
+    const postData  =  await data.json()
+  post = postData
+  }catch(e){
+  throw e
+  }
   return (
-    <div className=' h-20 text-center'>
-    <h1 className='text-2xl decoration-green-500  '>This about page routing</h1>
-    </div>
+    
+   
+    <PostList post={post} />
 
   )
 }
